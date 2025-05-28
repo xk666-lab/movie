@@ -1,0 +1,385 @@
+/* Navbar 样式 */
+.navbar {
+  background-color: #1a1a1a;
+  color: white;
+  box-shadow: 0 2px 15px rgba(0, 229, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+  letter-spacing: 1px;
+}
+
+/* SVG Logo 霓虹灯效果 */
+.neon-svg {
+  filter: drop-shadow(0 0 5px var(--accent-color));
+  transition: filter 0.3s ease;
+}
+
+.navbar-logo svg {
+  filter: drop-shadow(0 0 5px var(--accent-color));
+  transition: all 0.5s ease;
+}
+
+.navbar-logo:hover svg {
+  filter: drop-shadow(0 0 8px var(--accent-color)) drop-shadow(0 0 12px var(--accent-color));
+}
+
+.navbar-logo svg path, 
+.navbar-logo svg rect, 
+.navbar-logo svg circle {
+  transition: all 0.5s ease;
+}
+
+.navbar-logo:hover svg path, 
+.navbar-logo:hover svg rect {
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.navbar-logo:hover svg circle {
+  fill: #ffffff;
+  r: 2;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.navbar-link:hover {
+  color: var(--accent-color);
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-button, .login-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.search-button::before, .login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+  z-index: -1;
+}
+
+.search-button:hover::before, .login-button:hover::before {
+  left: 100%;
+}
+
+.login-button {
+  background-color: var(--accent-color);
+  color: var(--background);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.search-button:hover {
+  background-color: rgba(0, 229, 255, 0.1);
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+.login-button:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* MovieCard 样式 */
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 229, 255, 0.15);
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.movie-poster {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.movie-poster::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, var(--card-bg) 0%, transparent 20%);
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.05);
+}
+
+.movie-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.movie-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: white;
+  line-height: 1.3;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.movie-rating {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+}
+
+.movie-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-top: auto;
+}
+
+/* MovieList 样式 */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  background-color: var(--card-bg);
+}
+
+.loading {
+  color: var(--text-primary);
+}
+
+.error {
+  color: #ff4757;
+}
+
+/* 英雄区域样式 */
+.hero-section {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--nav-bg) 0%, var(--card-bg) 100%);
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-search {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.hero-search input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.hero-search input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+/* 评论卡片样式 */
+.review-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 229, 255, 0.2);
+}
+
+/* 分区标题样式 */
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  border-radius: 3px;
+}
+
+.movie-rating-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(10, 11, 20, 0.8);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.875rem;
+  z-index: 2;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.movie-action-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.movie-action-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--background);
+  box-shadow: 0 0 10px var(--accent-color);
+} 

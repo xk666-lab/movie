@@ -1,102 +1,106 @@
+import React from 'react';
 import Image from "next/image";
+import Navbar from '../components/Navbar';
+import MovieList from '../components/MovieList';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col min-h-screen bg-[var(--background)] text-white">
+      <Navbar />
+      
+      <main className="container mx-auto px-4 py-8">
+        <section className="hero-section">
+          <div className="hero-background"></div>
+          <div className="hero-content">
+            <h1 className="hero-title">探索电影的艺术</h1>
+            <p className="hero-subtitle">发现最好的电影和最真实的评论，让每一次观影都成为一次难忘的体验</p>
+            <div className="hero-search">
+              <input 
+                type="text" 
+                placeholder="搜索电影、导演或演员..." 
+                className="w-full"
+              />
+            </div>
+          </div>
+        </section>
+        
+        <section className="mb-16">
+          <h2 className="section-title">热门电影</h2>
+          <MovieList />
+        </section>
+        
+        <section className="mb-16">
+          <h2 className="section-title">最新评论</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="review-card">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--accent-secondary)] opacity-70 mr-3"></div>
+                <div>
+                  <h4 className="font-bold">影评人小王</h4>
+                  <p className="text-sm text-[var(--text-secondary)]">2023年10月15日</p>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-2">肖申克的救赎</h3>
+              <div className="flex mb-3">
+                <span className="text-[var(--accent-color)] neon-text">★★★★★</span>
+                <span className="ml-2 text-[var(--accent-color)]">9.5/10</span>
+              </div>
+              <p className="text-[var(--text-secondary)]">这部电影真的很棒，情节扣人心弦，演员表演精湛。强烈推荐给所有电影爱好者！希望能有更多这样的作品出现。</p>
+            </div>
+            
+            <div className="review-card">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--accent-color)] opacity-70 mr-3"></div>
+                <div>
+                  <h4 className="font-bold">电影达人</h4>
+                  <p className="text-sm text-[var(--text-secondary)]">2023年10月12日</p>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-2">教父</h3>
+              <div className="flex mb-3">
+                <span className="text-[var(--accent-color)] neon-text">★★★★★</span>
+                <span className="ml-2 text-[var(--accent-color)]">9.2/10</span>
+              </div>
+              <p className="text-[var(--text-secondary)]">经典中的经典，每一次重看都有新的发现。马龙·白兰度的表演无可挑剔。这部电影定义了黑帮片的标准。</p>
+            </div>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        <section className="mb-16">
+          <div className="bg-[var(--card-bg)] rounded-xl p-8 border border-opacity-10 border-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-4 gradient-text">加入我们的社区</h2>
+                <p className="text-[var(--text-secondary)] mb-6">分享你的观点，与其他电影爱好者交流，发现更多优质电影。</p>
+                <button className="login-button glow-effect">
+                  <span className="relative z-10">立即注册</span>
+                </button>
+              </div>
+              <div className="flex justify-center">
+                <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-secondary)] opacity-20"></div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      
+      <footer className="bg-[var(--card-bg)] py-8 mt-auto border-t border-opacity-10 border-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0">
+              <h3 className="text-xl font-bold text-[var(--accent-color)]">影评空间</h3>
+              <p className="text-[var(--text-secondary)] mt-2">发现电影的无限可能</p>
+            </div>
+            <div className="flex space-x-6">
+              <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-color)]">关于我们</a>
+              <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-color)]">隐私政策</a>
+              <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-color)]">联系我们</a>
+            </div>
+          </div>
+          <div className="mt-8 pt-6 border-t border-gray-800 text-center text-[var(--text-secondary)]">
+            <p>© 2023 影评空间 - 所有权利保留</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
